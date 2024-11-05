@@ -59,9 +59,29 @@ export default {
 					},
 					primary: '#007AFF'
 				}
+			},
+			keyframes: {
+				slideInTop: {
+					'0%': { transform: 'translateY(-100%)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				},
+				slideInBottom: {
+					'0%': { transform: 'translateY(100%)', opacity: '0' },
+					'100%': { transform: 'translateY(0)', opacity: '1' }
+				}
+			},
+			animation: {
+				slideInTop: 'slideInTop 1s ease-out forwards',
+				slideInBottom: 'slideInBottom 1s ease-out forwards'
 			}
 		}
 	},
+	safelist: [
+		{
+			pattern: /(dark|light)-(neutral|primary)-(0|10|20|30|40|50|60|70|80|90|100)/,
+			variants: ['hover', 'disabled', 'error']
+		}
+	],
 
 	plugins: []
 } satisfies Config;

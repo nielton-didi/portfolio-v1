@@ -137,6 +137,7 @@ input:-webkit-autofill:active {
 }
 
 ::-webkit-scrollbar {
+	display: none;
 	width: 3px;
 	height: 7px;
 }
@@ -160,4 +161,64 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
 	-webkit-appearance: none;
 	margin: 0;
+}
+
+@keyframes slideOutLeft {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(-100%);
+	}
+}
+
+@keyframes slideOutRight {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		transform: translateX(100%);
+	}
+}
+
+/* Transition for smooth expansion */
+.left-panel {
+	transition: width 0.3s ease;
+	width: 50%; /* Default width */
+}
+
+/* Hover effect to expand */
+.left-panel:hover {
+	width: 55%; /* Expanded width */
+}
+
+.right-panel {
+	transition: width 0.3s ease;
+	width: 50%; /* Default width */
+}
+
+/* Adjust the right panel width on left-panel hover */
+.left-panel:hover ~ .right-panel {
+	width: 45%; /* Adjust to keep full width */
+}
+
+/* Transition for smooth expansion */
+.right-panel {
+	transition: width 0.3s ease-in-out;
+	width: 50%; /* Default width */
+}
+
+/* Hover effect to expand */
+.right-panel:hover {
+	width: 55%; /* Expanded width */
+}
+
+.right-panel {
+	transition: width 0.3s ease;
+	width: 50%; /* Default width */
+}
+
+/* Adjust the right panel width on right-panel hover */
+.right-panel:hover ~ .left-panel {
+	width: 45%; /* Adjust to keep full width */
 }
