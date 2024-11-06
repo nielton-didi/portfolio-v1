@@ -36,7 +36,7 @@
 	<header
 		class={`absolute top-0 z-10 flex h-14 min-h-14 w-full flex-row items-center justify-center bg-dark-neutral-10`}
 	>
-		<div class={`flex h-full w-full max-w-[1040px] flex-row items-center justify-between px-6`}>
+		<div class={`flex h-full w-full max-w-[1040px] flex-row items-center justify-between px-6 lg:px-0`}>
 			<!-- leading -->
 			<div class={`flex h-full flex-row items-center justify-start`}>
 				<a href="/" class={`text-lg font-medium leading-tight text-dark-neutral-100`}>
