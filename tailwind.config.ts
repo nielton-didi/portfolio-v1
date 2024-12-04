@@ -27,7 +27,7 @@ export default {
 				lg: '16px',
 				xl: '20px',
 				'2xl': '28px',
-				headline: '128px'
+				headline: '88px'
 			},
 			colors:{
 				dark:{
