@@ -1,12 +1,13 @@
 <script lang="ts">
 	import '@fortawesome/fontawesome-svg-core/styles.css';
 	import { FontAwesomeIcon } from '@fortawesome/svelte-fontawesome';
-	import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+	import { faGithub, faLinkedin, faLinkedinIn } from '@fortawesome/free-brands-svg-icons';
 	import profilePic from '$lib/assets/images/hero/profile-pic.png';
 	import ExperienceCard from '$lib/components/ExperienceCard.svelte';
 	import type { PageData } from './$types';
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import { onMount } from 'svelte';
+	import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 	export let data: PageData;
 
@@ -43,13 +44,13 @@
 </script>
 
 <main
-	class={`relative block h-screen max-h-screen w-screen scroll-p-14 overflow-y-auto overflow-x-hidden scroll-smooth bg-light-neutral-0 font-sf-pro`}
+	class={`relative block h-screen max-h-screen w-screen scroll-p-14 overflow-y-auto overflow-x-hidden scroll-smooth bg-light-neutral-0 pb-24 font-sf-pro`}
 >
 	<!-- header -->
 	<header class={`sticky top-0 z-50 flex w-screen flex-row items-center justify-center`}>
 		<!-- navbar wrapper -->
 		<div
-			class={`flex h-14 min-h-14 w-full flex-row items-center justify-center bg-light-neutral-0`}
+			class={`flex h-20 min-h-20 w-full flex-row items-center justify-center bg-light-neutral-0`}
 		>
 			<!-- navbar content -->
 			<div class={`flex h-full w-full max-w-screen-lg flex-row items-center justify-between`}>
@@ -90,13 +91,15 @@
 							>
 						</li>
 						<li class={`flex h-full flex-col items-center justify-center`}>
-							<a href="/" class={`text-center text-md font-medium uppercase text-light-neutral-70`}
-								>skills</a
+							<a
+								href="#skills"
+								class={`text-center text-md font-medium uppercase text-light-neutral-70`}>skills</a
 							>
 						</li>
 						<li class={`flex h-full flex-col items-center justify-center`}>
-							<a href="/" class={`text-center text-md font-medium uppercase text-light-neutral-70`}
-								>contact</a
+							<a
+								href="#contact"
+								class={`text-center text-md font-medium uppercase text-light-neutral-70`}>contact</a
 							>
 						</li>
 					</ul>
@@ -106,7 +109,10 @@
 	</header>
 
 	<!-- about section -->
-	<section id="about" class={`flex w-screen flex-col items-center justify-center`}>
+	<section
+		id="about"
+		class={`flex h-screen max-h-screen w-screen flex-col items-center justify-center`}
+	>
 		<!-- content wrapper -->
 		<div class={`my-24 flex w-full max-w-screen-lg flex-col items-center justify-center`}>
 			<!-- hero content -->
@@ -137,7 +143,8 @@
 						<!-- social links -->
 						<div class={`flex w-full max-w-full flex-row items-center justify-start gap-4`}>
 							<a
-								href="/"
+								href="https://github.com/nielton-didi"
+								target="_blank"
 								class={`flex h-8 min-h-8 flex-col items-center justify-center transition-all duration-300 ease-in-out hover:scale-105`}
 							>
 								<FontAwesomeIcon
@@ -146,7 +153,8 @@
 								></FontAwesomeIcon>
 							</a>
 							<a
-								href="/"
+								href="http://www.linkedin.com/in/nieltondidi"
+								target="_blank"
 								class={`flex h-8 min-h-8 flex-col items-center justify-center transition-all duration-300 ease-in-out hover:scale-105`}
 							>
 								<FontAwesomeIcon
@@ -225,14 +233,43 @@
 	<!-- contact -->
 	<section id="contact" class={`flex w-screen flex-col items-center justify-center`}>
 		<!-- content wrapper -->
-		<div class={`mt-24 flex w-full max-w-screen-lg flex-col items-center justify-center gap-4`}>
+		<div class={`my-24 flex w-full max-w-screen-lg flex-col items-center justify-center gap-4`}>
 			<!-- header -->
-			<div class={`flex w-full flex-row items-center justify-start bg-light-neutral-0 py-4`}>
+			<div class={`flex w-full flex-col items-start justify-start gap-4 bg-light-neutral-0 py-4`}>
 				<p class={`text-start text-[40px] font-bold text-light-neutral-110`}>Let Get in Touch</p>
+				<p class={`max-w-xl text-start text-lg font-normal leading-tight text-light-neutral-70`}>
+					Let’s build and design something amazing together! Whether you’re hiring, collaborating,
+					or just brainstorming, my inbox is always open.
+				</p>
 			</div>
-			<div
-				class={`flex w-full flex-col items-start justify-start divide-y divide-light-neutral-20`}
-			></div>
+			<div class={`flex w-full flex-col items-start justify-start`}>
+				<div class={`flex w-full flex-row items-center justify-start gap-10`}>
+					<a
+						href="http://www.linkedin.com/in/nieltondidi"
+						target="_blank"
+						class={`group flex flex-row items-center justify-start gap-4 text-light-neutral-110 hover:text-light-neutral-70`}
+					>
+						<FontAwesomeIcon icon={faArrowRight} class={`align-middle text-lg `}></FontAwesomeIcon>
+						<span class={`text-xl font-normal `}>LinkedIn</span>
+					</a>
+					<a
+						href="mailto:nieltondidi@gmail.com"
+						class={`group flex flex-row items-center justify-start gap-4 text-light-neutral-110 hover:text-light-neutral-70`}
+					>
+						<FontAwesomeIcon icon={faArrowRight} class={`align-middle text-lg `}></FontAwesomeIcon>
+						<span class={`text-xl font-normal `}>Email</span>
+					</a>
+				</div>
+			</div>
 		</div>
 	</section>
+
+	<footer class={`flex w-full flex-col items-center justify-center`}>
+		<div class={`flex w-full max-w-screen-lg flex-col items-start justify-center gap-4 py-4`}>
+			<p class={`text-lg font-normal leading-tight text-light-neutral-110`}>
+				Designed and coded by Nielton Didi in Svelte and deployed in Vercel.
+			</p>
+			<p class={`text-md font-normal leading-tight text-light-neutral-70`}>© Nielton Didi 2024</p>
+		</div>
+	</footer>
 </main>
