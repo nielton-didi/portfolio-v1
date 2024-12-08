@@ -25,12 +25,10 @@
 	>
 		{#each images as image}
 			<div
-				class="flex h-96 w-full flex-shrink-0 flex-col items-center justify-center rounded-md bg-light-neutral-10"
+				class="flex h-96 w-full flex-shrink-0 flex-col items-center justify-center rounded-md bg-${$brightness}-neutral-10"
 			>
-            <div class={`flex flex-col justify-start items-start`}>
-
-            </div>
-        </div>
+				<div class={`flex flex-col items-start justify-start`}></div>
+			</div>
 		{/each}
 	</div>
 
