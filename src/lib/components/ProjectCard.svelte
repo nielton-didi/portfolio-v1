@@ -30,7 +30,7 @@
 				</svg>
 			</span>
 		</p>
-		<p class={`mt-4 text-xl font-normal leading-tight text-light-neutral-70`}>
+		<p class={`mt-4 text-lg font-normal leading-tight text-light-neutral-70`}>
 			{project.description}
 		</p>
 	</div>
