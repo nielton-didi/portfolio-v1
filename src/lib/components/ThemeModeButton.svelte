@@ -13,11 +13,11 @@
 		on:click={() => {
 			ThemeHelper.toggleBrightness();
 		}}
-		class={`flex w-10 min-w-10 flex-row items-center justify-start rounded-full bg-light-neutral-30 p-1 ${toggled ? `justify-start` : `justify-end`} transition-all duration-500 ease-in-out`}
+		class={`flex w-10 min-w-10 flex-row items-center justify-start rounded-full bg-${$brightness}-neutral-50 p-1 ${toggled ? `justify-start` : `justify-end`} transition-all duration-500 ease-in-out`}
 	>
-		<div class={`aspect-square w-4 rounded-full bg-light-neutral-60`}></div>
+		<div class={`aspect-square w-4 rounded-full bg-${$brightness}-neutral-70`}></div>
 	</button>
-	<span class={`text-light-neutral-110`}>
+	<span class={`text-${$brightness}-neutral-110`}>
 		<svg
 			xmlns="http://www.w3.org/2000/svg"
 			fill="none"
