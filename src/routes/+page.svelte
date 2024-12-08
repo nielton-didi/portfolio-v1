@@ -8,6 +8,7 @@
 	import ProjectCard from '$lib/components/ProjectCard.svelte';
 	import { onMount } from 'svelte';
 	import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+	import ThemeModeButton from '$lib/components/ThemeModeButton.svelte';
 
 	export let data: PageData;
 
@@ -44,7 +45,7 @@
 </script>
 
 <main
-	class={`relative block h-screen max-h-screen w-screen scroll-p-14 overflow-y-auto overflow-x-hidden scroll-smooth bg-light-neutral-0 pb-24 font-sf-pro`}
+	class={`relative block h-screen max-h-screen w-screen scroll-p-20 overflow-y-auto overflow-x-hidden scroll-smooth bg-light-neutral-0 pb-24 font-sf-pro`}
 >
 	<!-- header -->
 	<header class={`sticky top-0 z-50 flex w-screen flex-row items-center justify-center`}>
@@ -55,17 +56,19 @@
 			<!-- navbar content -->
 			<div class={`flex h-full w-full max-w-screen-lg flex-row items-center justify-between`}>
 				<!-- leading -->
-				<div class={`flex h-full min-w-max flex-row items-center justify-start`}>
+				<div class={`flex h-full min-w-max flex-row items-center justify-start gap-6`}>
 					<!-- brand -->
 					<a
 						href="/"
 						onclick={() => {
 							window.scrollTo({ top: 0 });
 						}}
-						class={`text-center text-xl font-bold text-light-neutral-110`}
+						class={`text-center text-2xl font-bold text-light-neutral-110`}
 					>
 						Nielton.
 					</a>
+
+					<ThemeModeButton></ThemeModeButton>
 				</div>
 				<!-- trailing -->
 				<div class={`flex h-full min-w-max flex-row items-center justify-end`}>
@@ -114,7 +117,7 @@
 		class={`flex h-screen max-h-screen w-screen flex-col items-center justify-center`}
 	>
 		<!-- content wrapper -->
-		<div class={`my-24 flex w-full max-w-screen-lg flex-col items-center justify-center`}>
+		<div class={`flex w-full max-w-screen-lg flex-col items-center justify-center`}>
 			<!-- hero content -->
 			<div class={`flex w-full flex-row items-start justify-between gap-6`}>
 				<!-- leading -->
@@ -193,7 +196,7 @@
 				<p class={`text-start text-headline font-bold text-light-neutral-40`}>Experience.</p>
 			</div>
 			<div
-				class={`flex w-full flex-col items-start justify-start divide-y divide-light-neutral-20 gap-24`}
+				class={`flex w-full flex-col items-start justify-start gap-24 divide-y divide-light-neutral-20`}
 			>
 				{#each data.experience as experience}
 					<ExperienceCard {experience}></ExperienceCard>
