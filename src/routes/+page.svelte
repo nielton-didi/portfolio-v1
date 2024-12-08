@@ -193,7 +193,7 @@
 				<p class={`text-start text-headline font-bold text-light-neutral-40`}>Experience.</p>
 			</div>
 			<div
-				class={`flex w-full flex-col items-start justify-start divide-y divide-light-neutral-20`}
+				class={`flex w-full flex-col items-start justify-start divide-y divide-light-neutral-20 gap-24`}
 			>
 				{#each data.experience as experience}
 					<ExperienceCard {experience}></ExperienceCard>
@@ -210,7 +210,7 @@
 			<div class={`flex w-full flex-row items-center justify-start bg-light-neutral-0 py-4`}>
 				<p class={`text-start text-headline font-bold text-light-neutral-40`}>Featured Projects.</p>
 			</div>
-			<div class={`flex w-full flex-col items-start justify-start gap-24`}>
+			<div class={`flex w-full flex-col items-start justify-start gap-40`}>
 				{#each data.projects as project}
 					<ProjectCard {project}></ProjectCard>
 				{/each}
