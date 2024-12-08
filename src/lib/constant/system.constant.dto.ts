@@ -51,10 +51,10 @@ export class SystemConstant {
 
 	public static projects: ProjectDTO[] = [
 		{
-			title: 'Impact Business Solutions Profile Website',
-			description: 'Company profile website revamp in Svelte and Tailwind',
+			title: 'Smart Home Mobile',
+			description: 'Control, automate, and monitor your smart home devices seamlessly from anywhere.',
 			imageUrl: 'src/lib/assets/images/projects/project-1.png',
-			redirectUrl: 'https://impact-multimedia.com/ibs/home',
+			redirectUrl: '',
 			skills: ['Node Js', 'Svelte', 'Tailwind', 'Typescript']
 		},
 		{

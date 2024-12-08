@@ -6,7 +6,7 @@
 </script>
 
 <div
-	class={`flex w-full flex-row items-start justify-start gap-6 rounded-md bg-light-neutral-0 py-6`}
+	class={`flex w-full flex-row items-start justify-start gap-6 rounded-md bg-light-neutral-0 py-6 project-card transition-all duration-500 ease-in-out scale-100 opacity-20`}
 >
 	<!-- leading -->
 	<div class={`flex w-full flex-col items-start justify-start`}>

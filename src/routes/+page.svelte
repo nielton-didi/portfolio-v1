@@ -5,12 +5,45 @@
 	import profilePic from '$lib/assets/images/hero/profile-pic.png';
 	import ExperienceCard from '$lib/components/ExperienceCard.svelte';
 	import type { PageData } from './$types';
+	import ProjectCard from '$lib/components/ProjectCard.svelte';
+	import { onMount } from 'svelte';
 
 	export let data: PageData;
+
+	onMount(() => {
+		// Select all project cards
+		const projectCards = document.querySelectorAll('.project-card');
+
+		// Create an observer instance
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						// Element is fully in view; scale it up
+						entry.target.classList.replace('scale-90', 'scale-100');
+						entry.target.classList.replace('opacity-20', 'opacity-100');
+					} else {
+						// Element is not fully in view; scale it down
+						entry.target.classList.replace('scale-100', 'scale-90');
+						entry.target.classList.replace('opacity-100', 'opacity-20');
+					}
+				});
+			},
+			{
+				threshold: [0.2, 1.0] // Adjust thresholds as needed
+			}
+		);
+
+		// Observe each project card
+		projectCards.forEach((card) => observer.observe(card));
+
+		// Cleanup observer on unmount
+		return () => observer.disconnect();
+	});
 </script>
 
 <main
-	class={`relative scroll-smooth font-sf-pro block h-screen max-h-screen w-screen overflow-y-auto overflow-x-hidden bg-light-neutral-0 pb-24`}
+	class={`relative block h-screen max-h-screen w-screen scroll-p-14 overflow-y-auto overflow-x-hidden scroll-smooth bg-light-neutral-0 font-sf-pro`}
 >
 	<!-- header -->
 	<header class={`sticky top-0 z-50 flex w-screen flex-row items-center justify-center`}>
@@ -23,31 +56,47 @@
 				<!-- leading -->
 				<div class={`flex h-full min-w-max flex-row items-center justify-start`}>
 					<!-- brand -->
-					<a href="/" class={`text-center text-lg font-medium text-light-neutral-110`}> n.didi </a>
+					<a
+						href="/"
+						onclick={() => {
+							window.scrollTo({ top: 0 });
+						}}
+						class={`text-center text-xl font-bold text-light-neutral-110`}
+					>
+						Nielton.
+					</a>
 				</div>
 				<!-- trailing -->
 				<div class={`flex h-full min-w-max flex-row items-center justify-end`}>
-					<ul class={`flex h-full flex-row items-center justify-end gap-4`}>
+					<ul class={`flex h-full flex-row items-center justify-end gap-10`}>
 						<li class={`flex h-full flex-col items-center justify-center`}>
-							<a href="#about" class={`text-center text-md font-medium text-light-neutral-60`}
-								>about</a
+							<a
+								href="#about"
+								class={`text-center text-md font-medium uppercase text-light-neutral-70`}>about</a
 							>
 						</li>
 						<li class={`flex h-full flex-col items-center justify-center`}>
-							<a href="#experience" class={`text-center text-md font-medium text-light-neutral-60`}
+							<a
+								href="#experience"
+								class={`text-center text-md font-medium uppercase text-light-neutral-70`}
 								>experience</a
 							>
 						</li>
 						<li class={`flex h-full flex-col items-center justify-center`}>
-							<a href="#projects" class={`text-center text-md font-medium text-light-neutral-60`}
+							<a
+								href="#projects"
+								class={`text-center text-md font-medium uppercase text-light-neutral-70`}
 								>projects</a
 							>
 						</li>
 						<li class={`flex h-full flex-col items-center justify-center`}>
-							<a href="/" class={`text-center text-md font-medium text-light-neutral-60`}>skills</a>
+							<a href="/" class={`text-center text-md font-medium uppercase text-light-neutral-70`}
+								>skills</a
+							>
 						</li>
 						<li class={`flex h-full flex-col items-center justify-center`}>
-							<a href="/" class={`text-center text-md font-medium text-light-neutral-60`}>contact</a
+							<a href="/" class={`text-center text-md font-medium uppercase text-light-neutral-70`}
+								>contact</a
 							>
 						</li>
 					</ul>
@@ -57,9 +106,9 @@
 	</header>
 
 	<!-- about section -->
-	<section id="about" class={`flex w-screen h-screen flex-col items-center justify-center`}>
+	<section id="about" class={`flex w-screen flex-col items-center justify-center`}>
 		<!-- content wrapper -->
-		<div class={` flex w-full max-w-screen-lg flex-col items-center justify-center`}>
+		<div class={`my-24 flex w-full max-w-screen-lg flex-col items-center justify-center`}>
 			<!-- hero content -->
 			<div class={`flex w-full flex-row items-start justify-between gap-6`}>
 				<!-- leading -->
@@ -77,7 +126,7 @@
 							Designer & Developer
 						</p>
 						<p
-							class={`mt-4 font-light max-w-full text-justify text-lg leading-tight tracking-wide text-light-neutral-70`}
+							class={`mt-4 max-w-full text-justify text-lg font-light leading-tight tracking-wide text-light-neutral-70`}
 						>
 							I create user-friendly design and build reliable web and mobile applications.
 						</p>
@@ -128,13 +177,11 @@
 	</section>
 
 	<!-- experience -->
-	<section id="experience" class={`flex w-screen flex-col items-center justify-center border-t`}>
+	<section id="experience" class={`flex w-screen flex-col items-center justify-start`}>
 		<!-- content wrapper -->
-		<div class={`mt-24 flex w-full max-w-screen-lg flex-col items-center justify-center gap-4`}>
+		<div class={`my-24 flex w-full max-w-screen-lg flex-col items-center justify-center gap-4`}>
 			<!-- header -->
-			<div
-				class={`flex py-4 w-full flex-row items-center justify-start bg-light-neutral-0`}
-			>
+			<div class={`flex w-full flex-row items-center justify-start bg-light-neutral-0 py-4`}>
 				<p class={`text-start text-headline font-bold text-light-neutral-40`}>Experience.</p>
 			</div>
 			<div
@@ -146,59 +193,46 @@
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- projects -->
-	<section id="projects" class={`flex w-screen flex-col items-center justify-center border-t`}>
+	<section id="projects" class={`flex w-screen flex-col items-center justify-center`}>
 		<!-- content wrapper -->
-		<div class={`mt-24 flex w-full max-w-screen-lg flex-col items-center justify-center gap-4`}>
+		<div class={`my-24 flex w-full max-w-screen-lg flex-col items-center justify-center gap-4`}>
 			<!-- header -->
-			<div
-				class={`flex py-4 w-full flex-row items-center justify-start bg-light-neutral-0`}
-			>
+			<div class={`flex w-full flex-row items-center justify-start bg-light-neutral-0 py-4`}>
 				<p class={`text-start text-headline font-bold text-light-neutral-40`}>Featured Projects.</p>
 			</div>
-			<div
-				class={`flex w-full flex-col items-start justify-start divide-y divide-light-neutral-20`}
-			>
-				
+			<div class={`flex w-full flex-col items-start justify-start gap-24`}>
+				{#each data.projects as project}
+					<ProjectCard {project}></ProjectCard>
+				{/each}
 			</div>
 		</div>
 	</section>
-	
+
 	<!-- skills -->
-	<section id="skills" class={`flex w-screen flex-col items-center justify-center border-t`}>
+	<section id="skills" class={`flex w-screen flex-col items-center justify-center`}>
 		<!-- content wrapper -->
 		<div class={`mt-24 flex w-full max-w-screen-lg flex-col items-center justify-center gap-4`}>
 			<!-- header -->
-			<div
-				class={`flex py-4 w-full flex-row items-center justify-start bg-light-neutral-0`}
-			>
+			<div class={`flex w-full flex-row items-center justify-start bg-light-neutral-0 py-4`}>
 				<p class={`text-start text-headline font-bold text-light-neutral-40`}>Skills.</p>
 			</div>
-			<div
-				class={`flex w-full flex-col items-start justify-start divide-y divide-light-neutral-20`}
-			>
-				
-			</div>
+			<div class={`flex w-full flex-col items-start justify-start`}></div>
 		</div>
 	</section>
 
 	<!-- contact -->
-	<section id="contact" class={`flex w-screen flex-col items-center justify-center border-t`}>
+	<section id="contact" class={`flex w-screen flex-col items-center justify-center`}>
 		<!-- content wrapper -->
 		<div class={`mt-24 flex w-full max-w-screen-lg flex-col items-center justify-center gap-4`}>
 			<!-- header -->
-			<div
-				class={`flex py-4 w-full flex-row items-center justify-start bg-light-neutral-0`}
-			>
+			<div class={`flex w-full flex-row items-center justify-start bg-light-neutral-0 py-4`}>
 				<p class={`text-start text-[40px] font-bold text-light-neutral-110`}>Let Get in Touch</p>
 			</div>
 			<div
 				class={`flex w-full flex-col items-start justify-start divide-y divide-light-neutral-20`}
-			>
-				
-			</div>
+			></div>
 		</div>
 	</section>
-
 </main>
